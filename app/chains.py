@@ -1,4 +1,5 @@
 import os
+import streamlit as st
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
@@ -14,7 +15,7 @@ class Chain:
 
         self.llm = ChatGroq(
             temperature=0,
-            groq_api_key=os.getenv("GROQ_API_KEY"),
+            groq_api_key=st.secrets["GROQ_API_KEY"],
             model_name="llama-3.3-70b-versatile"
         )
 
@@ -111,4 +112,4 @@ class Chain:
 
 if __name__ == "__main__":
 
-    print(os.getenv("GROQ_API_KEY"))
+    print(st.secrets["GROQ_API_KEY"])
